@@ -7,6 +7,7 @@ function App() {
       <LogoContainer />
       <MapView />
       <SearchContainer />
+      <ResultSummaryContainer />
     </div>
   );
 }
@@ -24,7 +25,19 @@ const MapView = () => {
 };
 
 const SearchContainer = () => {
-  return <div className="search-container"></div>;
+  return <div className="search-container">
+    <div className="search-container-top"></div>
+    <input type="text" className="search-container-input" placeholder="Search fueling station by name"/>
+  </div>;
 };
+
+
+const ResultSummaryContainer = () => {
+  return (
+    <div className="result-summary-container"></div>
+  )
+}
+
+
 
 export default App;
