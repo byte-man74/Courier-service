@@ -1,0 +1,45 @@
+# dependencies
+/node_modules
+
+# production build output
+/build
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.npmrc
+.yarn-debug.log*
+.yarnrc
+.yarn-error.log
+*.pem
+
+# IDE - VSCode
+.vscode
+
+# IDE - WebStorm/IntelliJ
+.idea
+*.iml
+
+# macOS
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+# log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories
+.TSBuildInfo
+
+# dotenv environment variables file
+.env
+
+# next.js build output
+.next
