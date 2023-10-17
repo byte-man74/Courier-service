@@ -107,7 +107,7 @@ const SearchContainer = () => {
 
       {/* buttton container  */}
       <div className="button">
-        <p style={{ fontSize: 14, fontWeight: "bold", color: "" }}>Search station</p>
+        <p style={{ fontSize: 12, fontWeight: "bold", color: "" }}>Search station</p>
       </div>
     </div>
   );
