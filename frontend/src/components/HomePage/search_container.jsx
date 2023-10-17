@@ -1,7 +1,16 @@
+import React from "react";
+import { useState } from "react";
+
 export const SearchContainer = () => {
-    return (
-      <div className="search-container">
-        <div className="search-container-top">
+  const [shrinkState, setShrinkState] = useState(false);
+
+  return (
+    <div className="search-container" style={shrinkState ? { height: 45 } : {}}>
+      <div
+        className="search-container-top"
+        onClick={() => setShrinkState(!shrinkState)}
+      >
+        {!shrinkState ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -17,38 +26,61 @@ export const SearchContainer = () => {
               stroke-linejoin="round"
             />
           </svg>
-          <p style={{ color: "white" }}>Filter Search</p>
-        </div>
-        <input
-          type="text"
-          className="search-container-input"
-          placeholder="Search fueling station by name"
-        />
-  
-        {/* state selection */}
-        <select
-          // value={selectedOption}
-          className="dropdown-list"
-          // onChange={handleOptionChange}
-        >
-          <option value="">--Select a state--</option>
-        </select>
-  
-        {/* state selection */}
-        <select
-          // value={selectedOption}
-          className="dropdown-list"
-          // onChange={handleOptionChange}
-        >
-          <option value="">--Select a local government--</option>
-        </select>
-  
-        {/* buttton container  */}
-        <div className="button">
-          <p style={{ fontSize: 12, fontWeight: "bold", color: "" }}>
-            Search station
-          </p>
-        </div>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9 9L4 4M4 4V8M4 4H8M15 9L20 4M20 4V8M20 4H16M9 15L4 20M4 20V16M4 20H8M15 15L20 20M20 20V16M20 20H16"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        )}
+        <p style={{ color: "white" }}>Filter Search</p>
       </div>
-    );
-  };
+      {!shrinkState ? (
+        <>
+          <input
+            type="text"
+            className="search-container-input"
+            placeholder="Search fueling station by name"
+          />
+
+          {/* state selection */}
+          <select
+            // value={selectedOption}
+            className="dropdown-list"
+            // onChange={handleOptionChange}
+          >
+            <option value="">--Select a state--</option>
+          </select>
+
+          {/* state selection */}
+          <select
+            // value={selectedOption}
+            className="dropdown-list"
+            // onChange={handleOptionChange}
+          >
+            <option value="">--Select a local government--</option>
+          </select>
+
+          {/* buttton container  */}
+          <div className="button">
+            <p style={{ fontSize: 12, fontWeight: "bold", color: "" }}>
+              Search station
+            </p>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+    </div>
+  );
+};

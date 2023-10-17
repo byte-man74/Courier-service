@@ -50,7 +50,8 @@ p{
   height: 650px;
   border-radius: 8px;
   flex-shrink: 0;
-  background-color: #f8f8f8;
+  background-color: hsl(0, 0%, 97%);
+  overflow-y: hidden;
   right: 10px;
   position: absolute;
   z-index: 2;
@@ -61,6 +62,7 @@ p{
   height: 45px;
   position: relative;
   display: flex;
+  cursor: pointer;
   align-items: center;
   gap: 10px;
   padding: 20px;
