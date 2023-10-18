@@ -26,7 +26,6 @@ export const MapView = () => {
     );
   }, []);
 
-  console.log(location);
 
   return (
     <div className="map-container">
