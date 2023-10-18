@@ -2,8 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 
+
 export const MapView = () => {
-  const [location, setLocation] = useState(null);
+  const [locationData, setLocation] = useState({
+    lat: -3.745,
+    lng: -38.523,
+  });
+
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -17,7 +23,7 @@ export const MapView = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
-        setLocation({ latitude, longitude });
+        setLocation({ lat: latitude, lng: longitude });
       },
       // Handle location errors
       () => {
@@ -26,24 +32,18 @@ export const MapView = () => {
     );
   }, []);
 
-
   return (
     <div className="map-container">
-      <MyMapComponent />
+      <MyMapComponent locationData={locationData} />
       <div className="map-overlay"></div>
     </div>
   );
 };
 
-const MyMapComponent = () => {
+const MyMapComponent = ({ locationData }) => {
   const containerStyle = {
     width: "100%",
     height: "100%",
-  };
-
-  const center = {
-    lat: -3.745,
-    lng: -38.523,
   };
 
   const { isLoaded } = useJsApiLoader({
@@ -55,7 +55,8 @@ const MyMapComponent = () => {
 
   const onLoad = React.useCallback(function callback(map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
+    const bounds = new window.google.maps.LatLngBounds();
+    bounds.extend(locationData);    
     map.fitBounds(bounds);
 
     setMap(map);
@@ -68,7 +69,7 @@ const MyMapComponent = () => {
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={center}
+      center={locationData}
       zoom={10}
       onLoad={onLoad}
       onUnmount={onUnmount}
