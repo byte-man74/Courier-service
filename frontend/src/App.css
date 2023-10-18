@@ -130,7 +130,6 @@ p {
   align-items: center;
   padding: 10px;
   top: 0;
-  background-color: red;
 }
 .button-container {
   display: flex;
@@ -146,4 +145,39 @@ p {
 }
 .button-container:hover {
   background-color: #bdb03f;
+}
+.result-summary-body {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 70px;
+}
+.result-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 90px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(189, 189, 189, 0.21);
+  background: #fff;
+}
+.result-body-content{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: space-between;
+}
+
+.main-overlay{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.548);
+  z-index: 10;
 }
