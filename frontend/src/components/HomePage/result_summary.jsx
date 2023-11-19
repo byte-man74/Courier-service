@@ -1,4 +1,4 @@
-export const ResultSummaryContainer = () => {
+export const ResultSummaryContainer = ({data}) => {
   return (
     <div className="result-summary-container">
       <div className="result-summary-header">
@@ -95,13 +95,13 @@ const FuelIconSvg = () => {
   );
 };
 
-const ResultBody = () => {
+const ResultBody = ({name, price, address}) => {
   return <div className="result-body">
     <FuelIconSvg />
     <div className="result-body-content">
-        <p style={{ fontWeight: "bold", fontSize: 15}} >Ooando</p>
-        <p style={{ fontWeight: 500, fontSize: 14}} >600/L</p>
-        <p style={{ fontWeight: 500, fontSize: 12}} >Lagos MainLand Bridge</p>
+        <p style={{ fontWeight: "bold", fontSize: 15}} >{name}Ooando</p>
+        <p style={{ fontWeight: 500, fontSize: 14}} >{price}600/L</p>
+        <p style={{ fontWeight: 500, fontSize: 12}} >{address}New estate karu</p>
     </div>
   </div>;
 };
