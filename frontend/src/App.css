@@ -7,6 +7,10 @@
 p {
   font-size: 14px;
 }
+h6{
+  font-size: 16px;
+  font-weight: 700;
+}
 .main-section {
   width: 100%;
   position: relative;
@@ -186,5 +190,15 @@ p {
 }
 
 .network-error-box {
-  
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  background-color: white;
+  position: relative;
+  z-index: 11;
 }
