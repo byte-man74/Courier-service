@@ -12,16 +12,21 @@ import server_error from "../../../src/serverErr.json";
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [networkError, setNetworkError] = useState(false);
-  const [serverError, setServerError] = useState(true);
+  const [serverError, setServerError] = useState(false);
   return (
     <div className="main-section">
       {loading && (
         <div className="main-overlay">
-          <Lottie
-            animationData={animation_data}
-            style={{ width: 320 }}
-            loop={true}
-          />
+          <div>
+            <Lottie
+              animationData={animation_data}
+              style={{ width: 320 }}
+              loop={true}
+            />
+            <p style={{ marginTop: 0, color: "white", fontWeight: 700 }}>
+              Fetching Data, This may take a minute
+            </p>
+          </div>
         </div>
       )}
       {networkError && (

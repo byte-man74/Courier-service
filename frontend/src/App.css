@@ -24,7 +24,7 @@ h6{
 }
 .search-container {
   width: 340px;
-  height: 311px;
+  min-height: 311px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,6 +34,7 @@ h6{
   position: absolute;
   z-index: 2;
   top: 70px;
+  padding-bottom: 20px;
   left: 10px;
 }
 
@@ -120,6 +121,10 @@ h6{
   transition: background-color 0.21s ease-in-out;
 
   background-color: #f3e461;
+}
+.button.blue{
+  background-color: rgba(135, 206, 250, 0);
+  border: black solid 1px;
 }
 .button:hover {
   background-color: #bdb03f;

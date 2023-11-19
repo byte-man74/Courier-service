@@ -81,6 +81,12 @@ export const SearchContainer = () => {
               Search station
             </p>
           </div>
+
+          <div className="button blue" >
+            <p style={{ fontSize: 12, fontWeight: "bold", color: "" }}>
+              Compute Average price
+            </p>
+          </div>
         </>
       ) : (
         <></>
