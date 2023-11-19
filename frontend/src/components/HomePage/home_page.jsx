@@ -8,18 +8,29 @@ import Lottie from "lottie-react";
 import animation_data from "../../../src/app_load.json";
 
 const HomePage = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true);
+  const [networkError, setNetworkError] = useState(true);
   return (
     <div className="main-section">
-      <div className="main-overlay">
-        <Lottie
-          animationData={animation_data}
-          style={{ width: 320 }}
-          loop={true}
-        />
-      </div>
+      {loading && (
+        <div className="main-overlay">
+          <Lottie
+            animationData={animation_data}
+            style={{ width: 320 }}
+            loop={true}
+          />
+        </div>
+      )}
+      {networkError && (
+        <div className="main-overlay">
+          <div className="network-error-box">
+            
+          </div>
+        </div>
+      )}
+
       <LogoContainer />
-      <MapView />
+      <MapView setLoading={setLoading} />
       <SearchContainer />
       <ResultSummaryContainer />
     </div>
