@@ -8,7 +8,6 @@ export const getStation = async (setData, setLoading, setOriginalData) => {
 
     setData(response.data.data);
     setOriginalData(response.data.data);
-    setLoading(false);
   } catch (error) {
     //j
   } finally {
@@ -17,14 +16,29 @@ export const getStation = async (setData, setLoading, setOriginalData) => {
 };
 
 
-export const processSearch = async (setData, data, setLoading, name, local_government) => {
-  setLoading(true);
+export const getStates = async (setState) => {
+  try {
+    const response = await APIinstance.get("admin/get_all_state_available/");
+    setState(response.data)
+  } catch (error) {
+  }
+}
 
-  if (!name && !local_government) {
+export const getLga = async (setLga) => {
+  try {
+    const response = await APIinstance.get("admin/get_all_lga_available/");
+    setLga(response.data)
+  } catch (error) {
+  }
+}
+
+export const processSearch = async (setData, data, setLoading, name, local_government, state) => {
+  setLoading(true);
+  if (!name && !local_government && !state) {
     // If both name and local_government are falsy, reset the data to the original state
     setData(data);
   } else {
-    let processed_data = filterStations(data, name, local_government);
+    let processed_data = filterStations(data, name, local_government, state);
     setData(processed_data);
   }
 
@@ -33,8 +47,8 @@ export const processSearch = async (setData, data, setLoading, name, local_gover
 
 
 
-export function filterStations(data, nameFilter, localGovFilter) {
-  console.log(nameFilter);
+export function filterStations(data, nameFilter, localGovFilter, stateFilter) {
+  console.log(stateFilter);
   try {
     if (!data || !Array.isArray(data)) {
       throw new Error('Invalid or missing data array');
@@ -55,7 +69,14 @@ export function filterStations(data, nameFilter, localGovFilter) {
           .toLowerCase()
           .includes(localGovFilter.toLowerCase());
 
-      return nameMatch && localGovMatch;
+    
+      const stateMatch =
+          station.station.state &&
+          station.station.state
+            .toLowerCase()
+            .includes(stateFilter.toLowerCase());
+
+      return nameMatch && localGovMatch && stateMatch;
     });
 
     return processedData;

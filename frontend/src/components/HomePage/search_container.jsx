@@ -1,6 +1,11 @@
 import React from "react";
-import { useState } from "react";
-import { processSearch, calculateStationsAndAveragePrice } from "../functions/main";
+import { useState, useEffect } from "react";
+import {
+  processSearch,
+  calculateStationsAndAveragePrice,
+  getStates,
+  getLga,
+} from "../functions/main";
 
 const ExpandIcon = () => (
   <svg
@@ -38,7 +43,7 @@ const ShrinkIcon = () => (
   </svg>
 );
 
-const ClearIcon = ({onClick}) => {
+const ClearIcon = ({ onClick }) => {
   return (
     <div onClick={onClick}>
       <svg
@@ -57,25 +62,74 @@ const ClearIcon = ({onClick}) => {
   );
 };
 
-export const SearchContainer = ({ setData, data, setAveragePrice, originalData, setLoading }) => {
-
-  const resetFilter = () => {
-    console.log(originalData);
-    setData(originalData)
-  }
-
+export const SearchContainer = ({
+  setData,
+  data,
+  setAveragePrice,
+  originalData,
+  setLoading,
+}) => {
+  const [state, setState] = useState(null);
+  const [lga, setLga] = useState(null);
+  const [loadingState, setLoadingState] = useState(true);
+  const [loadingLga, setLoadingLga] = useState(true);
   const [shrinkState, setShrinkState] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedLga, setSelectedLga] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        getStates(setState);
+        setLoadingState(false);
+      } catch (error) {
+        console.error("Error fetching states:", error);
+        setLoadingState(false);
+      }
+
+      try {
+        getLga(setLga);
+        setLoadingLga(false);
+      } catch (error) {
+        console.error("Error fetching LGAs:", error);
+        setLoadingLga(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const resetFilter = () => {
+    setData(originalData);
+  };
 
   const handleSearchButtonClick = () => {
     console.log(searchText);
-    processSearch(setData, data, setLoading, searchText, "");
+    processSearch(
+      setData,
+      data,
+      setLoading,
+      searchText,
+      selectedLga,
+      selectedState
+    );
   };
 
-
   const calculatAveragePrice = () => {
-    calculateStationsAndAveragePrice(data, setAveragePrice)
-  }
+    calculateStationsAndAveragePrice(data, setAveragePrice);
+  };
+
+  const handleStateChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedState(selectedValue);
+  };
+
+  const handleLgaChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedLga(selectedValue);
+  };
+
 
   return (
     <div className="search-container" style={shrinkState ? { height: 45 } : {}}>
@@ -99,33 +153,49 @@ export const SearchContainer = ({ setData, data, setAveragePrice, originalData, 
             onChange={(e) => setSearchText(e.target.value)}
           />
 
-          {/* state selection */}
+          {/* State selection */}
           <select
-            // value={selectedOption}
             className="dropdown-list"
-            // onChange={handleOptionChange}
+            onChange={handleStateChange}
+            value={selectedState}
           >
             <option value="">--Select a state--</option>
+            {!loadingState &&
+              state &&
+              state.data.length > 0 &&
+              state.data.map((stateName, index) => (
+                <option key={index} value={stateName.name}>
+                  {stateName.name}
+                </option>
+              ))}
           </select>
 
-          {/* state selection */}
+          {/* Local Government Area (LGA) selection */}
           <select
-            // value={selectedOption}
             className="dropdown-list"
-            // onChange={handleOptionChange}
+            onChange={handleLgaChange}
+            value={selectedLga}
           >
             <option value="">--Select a local government--</option>
+            {!loadingLga &&
+              lga &&
+              lga.data.length > 0 &&
+              lga.data.map((lgaName, index) => (
+                <option key={index} value={lgaName.name}>
+                  {lgaName.name}
+                </option>
+              ))}
           </select>
 
-          {/* buttton container  */}
+          {/* Button container  */}
           <div className="button" onClick={handleSearchButtonClick}>
-            <p style={{ fontSize: 12, fontWeight: "bold", color: "" }}>
+            <p style={{ fontSize: 12, fontWeight: 600, color: "" }}>
               Search station
             </p>
           </div>
 
           <div className="button blue" onClick={calculatAveragePrice}>
-            <p style={{ fontSize: 12, fontWeight: "bold", color: "" }}>
+            <p style={{ fontSize: 12, fontWeight: 600, color: "" }}>
               Compute Average price
             </p>
           </div>

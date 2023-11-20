@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 
 
 const HomePage = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [networkError, setNetworkError] = useState(false);
   const [serverError, setServerError] = useState(false);
   const [data, setData] = useState(null);
