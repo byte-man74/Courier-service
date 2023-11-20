@@ -4,13 +4,12 @@ import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { getStation } from "../functions/main";
 
 
-export const MapView = ({setLoading}) => {
+export const MapView = ({setLoading, data, setData}) => {
   const [locationData, setLocation] = useState({
     lat: -3.745,
     lng: -38.523,
   });
 
-  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {

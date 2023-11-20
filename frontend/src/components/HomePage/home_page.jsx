@@ -13,6 +13,8 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [networkError, setNetworkError] = useState(false);
   const [serverError, setServerError] = useState(false);
+  const [data, setData] = useState(null);
+
   return (
     <div className="main-section">
       {loading && (
@@ -55,7 +57,7 @@ const HomePage = () => {
       )}
 
       <LogoContainer />
-      <MapView setLoading={setLoading} />
+      <MapView setLoading={setLoading} data={data} setData={setData} />
       <SearchContainer />
       <ResultSummaryContainer />
     </div>

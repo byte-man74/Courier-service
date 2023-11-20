@@ -39,6 +39,7 @@ const ShrinkIcon = () => (
 
 export const SearchContainer = () => {
   const [shrinkState, setShrinkState] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   return (
     <div className="search-container" style={shrinkState ? { height: 45 } : {}}>
@@ -55,6 +56,8 @@ export const SearchContainer = () => {
             type="text"
             className="search-container-input"
             placeholder="Search fueling station by name"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
           />
 
           {/* state selection */}
