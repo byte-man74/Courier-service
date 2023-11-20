@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { processSearch } from "../functions/main";
 
-
 const ExpandIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

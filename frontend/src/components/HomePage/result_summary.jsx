@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Lottie from "lottie-react";
+import animation_data from "../../../src/emptyL.json";
 
 export const ResultSummaryContainer = ({ data }) => {
   const itemsPerPage = 7;
@@ -46,7 +48,15 @@ export const ResultSummaryContainer = ({ data }) => {
           ))}
         </div>
       ) : (
-        <div className="empty-list-message">No results found.</div>
+        <div className="empty-list-message">
+          {" "}
+          <Lottie
+            animationData={animation_data}
+            style={{ width: 200 }}
+            loop={true}
+          />
+          <h6>No result found!</h6>
+        </div>
       )}
     </div>
   );
@@ -68,7 +78,7 @@ const OptionIcon = () => {
   );
 };
 
-const BackPagiationButton = ({action}) => {
+const BackPagiationButton = ({ action }) => {
   return (
     <div className="button-container" onClick={action}>
       <svg
@@ -87,7 +97,7 @@ const BackPagiationButton = ({action}) => {
   );
 };
 
-const FrontPagiationButton = ({action}) => {
+const FrontPagiationButton = ({ action }) => {
   return (
     <div className="button-container" onClick={action}>
       <svg
