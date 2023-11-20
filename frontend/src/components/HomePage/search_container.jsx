@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { processSearch } from "../functions/main";
+import { useState } from "react";
+import { processSearch, calculateStationsAndAveragePrice } from "../functions/main";
 
 const ExpandIcon = () => (
   <svg
@@ -57,7 +57,7 @@ const ClearIcon = ({onClick}) => {
   );
 };
 
-export const SearchContainer = ({ setData, data, originalData, setLoading }) => {
+export const SearchContainer = ({ setData, data, setAveragePrice, originalData, setLoading }) => {
 
   const resetFilter = () => {
     console.log(originalData);
@@ -71,6 +71,11 @@ export const SearchContainer = ({ setData, data, originalData, setLoading }) => 
     console.log(searchText);
     processSearch(setData, data, setLoading, searchText, "");
   };
+
+
+  const calculatAveragePrice = () => {
+    calculateStationsAndAveragePrice(data, setAveragePrice)
+  }
 
   return (
     <div className="search-container" style={shrinkState ? { height: 45 } : {}}>
@@ -119,7 +124,7 @@ export const SearchContainer = ({ setData, data, originalData, setLoading }) => 
             </p>
           </div>
 
-          <div className="button blue">
+          <div className="button blue" onClick={calculatAveragePrice}>
             <p style={{ fontSize: 12, fontWeight: "bold", color: "" }}>
               Compute Average price
             </p>

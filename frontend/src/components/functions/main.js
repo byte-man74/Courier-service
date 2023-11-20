@@ -33,7 +33,7 @@ export const processSearch = async (setData, data, setLoading, name, local_gover
 
 
 
-function filterStations(data, nameFilter, localGovFilter) {
+export function filterStations(data, nameFilter, localGovFilter) {
   console.log(nameFilter);
   try {
     if (!data || !Array.isArray(data)) {
@@ -69,8 +69,8 @@ function filterStations(data, nameFilter, localGovFilter) {
 
 
 
-function calculateStationsAndAveragePrice(data) {
-  // Check if the dataset is empty
+export function calculateStationsAndAveragePrice(data, setAveragePrice) {
+  console.log('Calculating')
   if (data.length === 0) {
     return { numberOfStations: 0, averagePrice: 0 };
   }
@@ -84,6 +84,7 @@ function calculateStationsAndAveragePrice(data) {
 
   // Round the average price to two decimal places
   const roundedAveragePrice = Math.round(averagePrice * 100) / 100;
+  setAveragePrice(roundedAveragePrice)
 
   return { numberOfStations, averagePrice: roundedAveragePrice };
 }

@@ -9,6 +9,9 @@ import animation_data from "../../../src/app_load.json";
 import network_error from "../../../src/networkErr.json";
 import server_error from "../../../src/serverErr.json";
 import calculate from "../../../src/calculate.json";
+import { motion } from "framer-motion";
+
+
 
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
@@ -22,7 +25,7 @@ const HomePage = () => {
 
   const CloseIcon = () => {
     return (
-      <div onClick={() => setAveragePrice([])} style={{ cursor: "pointer"}}>
+      <div onClick={() => setAveragePrice(null)} style={{ cursor: "pointer"}}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -85,9 +88,15 @@ const HomePage = () => {
           </div>
         </div>
       )}
-      {averagePrice == null && (
+      {averagePrice !== null && (
         <div className="main-overlay">
-          <div className="network-error-box" style={{ height: 400 }}>
+          <motion.div
+            className="network-error-box"
+            style={{ height: 400 }}
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+          >
             <div className="box-header">
               <CloseIcon />
             </div>
@@ -96,8 +105,8 @@ const HomePage = () => {
               style={{ width: 220 }}
               loop={true}
             />
-            <h6>Average price of stations available ...₦360/L</h6>
-          </div>
+            <h6>Average price of stations available ...₦{averagePrice}/L</h6>
+          </motion.div>
         </div>
       )}
 
@@ -111,6 +120,7 @@ const HomePage = () => {
       <SearchContainer
         setData={setData}
         data={data}
+        setAveragePrice={setAveragePrice}
         originalData={originalData}
         setLoading={setLoading}
       />
