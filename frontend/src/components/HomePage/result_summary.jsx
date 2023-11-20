@@ -1,4 +1,8 @@
 export const ResultSummaryContainer = ({data}) => {
+  let x = []
+  if (data != null) {
+
+  }
   return (
     <div className="result-summary-container">
       <div className="result-summary-header">

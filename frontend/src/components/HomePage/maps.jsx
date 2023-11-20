@@ -31,6 +31,7 @@ export const MapView = ({setLoading, data, setData}) => {
       }
     );
     getStation(setData, setLoading)
+    
   }, []);
 
   return (

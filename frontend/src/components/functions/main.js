@@ -6,7 +6,8 @@ export const getStation = async (setData, setLoading) => {
 
     const response = await APIinstance.get("admin/get_all_stations/");
 
-    setData(response.data);
+    setData(response.data.data);
+    console.log(response.data.data);
     setLoading(false);
   } catch (error) {
     //j
