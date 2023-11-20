@@ -256,3 +256,12 @@ h6{
   justify-content: center;
   align-items: center;
 }
+.box-header{
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

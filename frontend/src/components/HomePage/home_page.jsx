@@ -8,6 +8,7 @@ import Lottie from "lottie-react";
 import animation_data from "../../../src/app_load.json";
 import network_error from "../../../src/networkErr.json";
 import server_error from "../../../src/serverErr.json";
+import calculate from "../../../src/calculate.json";
 
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
@@ -15,6 +16,34 @@ const HomePage = () => {
   const [serverError, setServerError] = useState(false);
   const [data, setData] = useState(null);
   const [originalData, setOriginalData] = useState(null);
+  const [averagePrice, setAveragePrice] = useState(null);
+
+
+
+  const CloseIcon = () => {
+    return (
+      <div onClick={() => setAveragePrice([])} style={{ cursor: "pointer"}}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+            fill="black"
+          />
+        </svg>
+      </div>
+    );
+  };
+
+
+
+
+
+
 
   return (
     <div className="main-section">
@@ -56,13 +85,39 @@ const HomePage = () => {
           </div>
         </div>
       )}
+      {averagePrice == null && (
+        <div className="main-overlay">
+          <div className="network-error-box" style={{ height: 400 }}>
+            <div className="box-header">
+              <CloseIcon />
+            </div>
+            <Lottie
+              animationData={calculate}
+              style={{ width: 220 }}
+              loop={true}
+            />
+            <h6>Average price of stations available ...₦360/L</h6>
+          </div>
+        </div>
+      )}
 
       <LogoContainer />
-      <MapView setLoading={setLoading} data={data} setData={setData} setOriginalData={setOriginalData} />
-      <SearchContainer setData={setData} data={data} originalData={originalData} setLoading={setLoading} />
+      <MapView
+        setLoading={setLoading}
+        data={data}
+        setData={setData}
+        setOriginalData={setOriginalData}
+      />
+      <SearchContainer
+        setData={setData}
+        data={data}
+        originalData={originalData}
+        setLoading={setLoading}
+      />
       <ResultSummaryContainer data={data} />
     </div>
   );
 };
+
 
 export default HomePage;

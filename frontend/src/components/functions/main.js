@@ -49,13 +49,13 @@ function filterStations(data, nameFilter, localGovFilter) {
         station.station.name &&
         station.station.name.toLowerCase().includes(nameFilter.toLowerCase());
 
-      // const localGovMatch =
-      //   station.station.local_government &&
-      //   station.station.local_government
-      //     .toLowerCase()
-      //     .includes(localGovFilter.toLowerCase());
+      const localGovMatch =
+        station.station.local_government &&
+        station.station.local_government
+          .toLowerCase()
+          .includes(localGovFilter.toLowerCase());
 
-      return nameMatch;
+      return nameMatch && localGovMatch;
     });
 
     return processedData;
