@@ -1,21 +1,44 @@
 import React, { useState } from "react";
 
 export const ResultSummaryContainer = ({ data }) => {
-  console.log(data);
+  const itemsPerPage = 7;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalItems = data ? data.length : 0;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  const handleClickBack = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
+  const handleClickFront = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
   return (
     <div className="result-summary-container">
       <div className="result-summary-header">
         <OptionIcon />
+        <div>{`Page ${currentPage} of ${totalPages}`}</div>
         <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
-          <BackPagiationButton />
-          <FrontPagiationButton />
+          <BackPagiationButton
+            action={handleClickBack}
+            disabled={currentPage === 1}
+          />
+          <FrontPagiationButton
+            action={handleClickFront}
+            disabled={currentPage === totalPages}
+          />
         </div>
       </div>
       {/* Simplify condition using logical AND */}
       {data && (
         <div className="result-summary-body">
           {/* Use map's second parameter (index) as the key */}
-          {data.slice(0, 7).map((item, index) => (
+          {data.slice(startIndex, endIndex).map((item, index) => (
             <ResultBody
               key={index}
               name={item.station.name}
@@ -45,9 +68,9 @@ const OptionIcon = () => {
   );
 };
 
-const BackPagiationButton = () => {
+const BackPagiationButton = ({action}) => {
   return (
-    <div className="button-container">
+    <div className="button-container" onClick={action}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="15"
@@ -64,9 +87,9 @@ const BackPagiationButton = () => {
   );
 };
 
-const FrontPagiationButton = () => {
+const FrontPagiationButton = ({action}) => {
   return (
-    <div className="button-container">
+    <div className="button-container" onClick={action}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="15"
@@ -104,16 +127,14 @@ const FuelIconSvg = () => {
 };
 
 const ResultBody = ({ name, price, address }) => {
-  const priceFormatted = price.toLocaleString()
+  const priceFormatted = price.toLocaleString();
   return (
     <div className="result-body">
       <FuelIconSvg />
       <div className="result-body-content">
         <p style={{ fontWeight: 600, fontSize: 15 }}>{name}</p>
         <p style={{ fontWeight: 500, fontSize: 14 }}>₦{priceFormatted}/L</p>
-        <p style={{ fontWeight: 500, fontSize: 12 }}>
-          {address}
-        </p>
+        <p style={{ fontWeight: 500, fontSize: 12 }}>{address}</p>
       </div>
     </div>
   );
