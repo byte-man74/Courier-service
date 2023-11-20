@@ -58,8 +58,8 @@ const HomePage = () => {
 
       <LogoContainer />
       <MapView setLoading={setLoading} data={data} setData={setData} />
-      <SearchContainer />
-      <ResultSummaryContainer />
+      <SearchContainer data={data} />
+      <ResultSummaryContainer data={data}/>
     </div>
   );
 };

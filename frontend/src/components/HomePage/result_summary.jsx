@@ -1,8 +1,7 @@
-export const ResultSummaryContainer = ({data}) => {
-  let x = []
-  if (data != null) {
+import React, { useState } from "react";
 
-  }
+export const ResultSummaryContainer = ({ data }) => {
+  console.log(data);
   return (
     <div className="result-summary-container">
       <div className="result-summary-header">
@@ -12,18 +11,23 @@ export const ResultSummaryContainer = ({data}) => {
           <FrontPagiationButton />
         </div>
       </div>
-      <div className="result-summary-body">
-        <ResultBody />
-        <ResultBody />
-        <ResultBody />
-        <ResultBody />
-        <ResultBody />
-        <ResultBody />
-      </div>
+      {/* Simplify condition using logical AND */}
+      {data && (
+        <div className="result-summary-body">
+          {/* Use map's second parameter (index) as the key */}
+          {data.slice(0, 7).map((item, index) => (
+            <ResultBody
+              key={index}
+              name={item.station.name}
+              price={item.price.amount}
+              address={item.station.address}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
-
 const OptionIcon = () => {
   return (
     <svg
@@ -99,13 +103,18 @@ const FuelIconSvg = () => {
   );
 };
 
-const ResultBody = ({name, price, address}) => {
-  return <div className="result-body">
-    <FuelIconSvg />
-    <div className="result-body-content">
-        <p style={{ fontWeight: "bold", fontSize: 15}} >{name}Ooando</p>
-        <p style={{ fontWeight: 500, fontSize: 14}} >{price}600/L</p>
-        <p style={{ fontWeight: 500, fontSize: 12}} >{address}New estate karu</p>
+const ResultBody = ({ name, price, address }) => {
+  const priceFormatted = price.toLocaleString()
+  return (
+    <div className="result-body">
+      <FuelIconSvg />
+      <div className="result-body-content">
+        <p style={{ fontWeight: 600, fontSize: 15 }}>{name}</p>
+        <p style={{ fontWeight: 500, fontSize: 14 }}>₦{priceFormatted}/L</p>
+        <p style={{ fontWeight: 500, fontSize: 12 }}>
+          {address}
+        </p>
+      </div>
     </div>
-  </div>;
+  );
 };
