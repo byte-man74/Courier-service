@@ -34,10 +34,8 @@ export const ResultSummaryContainer = ({ data }) => {
           />
         </div>
       </div>
-      {/* Simplify condition using logical AND */}
-      {data && (
+      {data && data.length > 0 ? (
         <div className="result-summary-body">
-          {/* Use map's second parameter (index) as the key */}
           {data.slice(startIndex, endIndex).map((item, index) => (
             <ResultBody
               key={index}
@@ -47,6 +45,8 @@ export const ResultSummaryContainer = ({ data }) => {
             />
           ))}
         </div>
+      ) : (
+        <div className="empty-list-message">No results found.</div>
       )}
     </div>
   );

@@ -1,12 +1,13 @@
 import APIinstance from "../../api/api";
 
-export const getStation = async (setData, setLoading) => {
+export const getStation = async (setData, setLoading, setOriginalData) => {
   setLoading(true);
   try {
 
     const response = await APIinstance.get("admin/get_all_stations/");
 
     setData(response.data.data);
+    setOriginalData(response.data.data);
     setLoading(false);
   } catch (error) {
     //j
@@ -19,25 +20,52 @@ export const getStation = async (setData, setLoading) => {
 export const processSearch = async (setData, data, setLoading, name, local_government) => {
   setLoading(true);
 
-  let processed_data = filterStations(data, name, local_government)
-  setData(processed_data);
+  if (!name && !local_government) {
+    // If both name and local_government are falsy, reset the data to the original state
+    setData(data);
+  } else {
+    let processed_data = filterStations(data, name, local_government);
+    setData(processed_data);
+  }
 
   setLoading(false);
-}
+};
+
 
 
 function filterStations(data, nameFilter, localGovFilter) {
-  return data.filter(station => {
-    // Check if the station name includes the specified name filter (case insensitive)
-    const nameMatch = station.station.name.toLowerCase().includes(nameFilter.toLowerCase());
+  console.log(nameFilter);
+  try {
+    if (!data || !Array.isArray(data)) {
+      throw new Error('Invalid or missing data array');
+    }
 
-    // Check if the station's local government includes the specified local government filter (case insensitive)
-    const localGovMatch = station.station.local_government.toLowerCase().includes(localGovFilter.toLowerCase());
+    if (typeof nameFilter !== 'string' || typeof localGovFilter !== 'string') {
+      throw new Error('Invalid filter parameters');
+    }
 
-    // Return true if both name and local government filters match
-    return nameMatch && localGovMatch;
-  });
+    const processedData = data.filter((station) => {
+      const nameMatch =
+        station.station.name &&
+        station.station.name.toLowerCase().includes(nameFilter.toLowerCase());
+
+      // const localGovMatch =
+      //   station.station.local_government &&
+      //   station.station.local_government
+      //     .toLowerCase()
+      //     .includes(localGovFilter.toLowerCase());
+
+      return nameMatch;
+    });
+
+    return processedData;
+  } catch (error) {
+    console.error('Error in filterStations:', error.message);
+    return [];
+  }
 }
+
+
 
 
 

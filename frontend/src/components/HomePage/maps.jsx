@@ -4,7 +4,7 @@ import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { getStation } from "../functions/main";
 
 
-export const MapView = ({setLoading, data, setData}) => {
+export const MapView = ({setLoading, data, setOriginalData, setData}) => {
   const [locationData, setLocation] = useState({
     lat: -3.745,
     lng: -38.523,
@@ -30,7 +30,7 @@ export const MapView = ({setLoading, data, setData}) => {
         setError("Unable to retrieve your location.");
       }
     );
-    getStation(setData, setLoading)
+    getStation(setData, setLoading, setOriginalData)
     
   }, []);
 

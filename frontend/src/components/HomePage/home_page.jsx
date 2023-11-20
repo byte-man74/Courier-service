@@ -14,6 +14,7 @@ const HomePage = () => {
   const [networkError, setNetworkError] = useState(false);
   const [serverError, setServerError] = useState(false);
   const [data, setData] = useState(null);
+  const [originalData, setOriginalData] = useState(null);
 
   return (
     <div className="main-section">
@@ -57,9 +58,9 @@ const HomePage = () => {
       )}
 
       <LogoContainer />
-      <MapView setLoading={setLoading} data={data} setData={setData} />
-      <SearchContainer data={data} />
-      <ResultSummaryContainer data={data}/>
+      <MapView setLoading={setLoading} data={data} setData={setData} setOriginalData={setOriginalData} />
+      <SearchContainer setData={setData} data={data} originalData={originalData} setLoading={setLoading} />
+      <ResultSummaryContainer data={data} />
     </div>
   );
 };
