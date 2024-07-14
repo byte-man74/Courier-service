@@ -8,8 +8,7 @@ const Splash = () => {
 
   useEffect(() => {
     const redirectTimer = setTimeout(() => {
-      // Replace "/destination" with the path you want to navigate to
-      history(`/main`)
+      history(`/search`)
     }, 3000);
 
     // Clear the timer if the component unmounts
