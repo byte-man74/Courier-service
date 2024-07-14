@@ -151,9 +151,8 @@ h6{
   background: #fff;
 }
 .button {
-  min-width: 300px;
-  margin-top: 20px;
-  height: 45px;
+  min-width: 100px;
+  padding: 3px 10px;
   display: flex;
   justify-content: center;
   border-radius: 10px;
