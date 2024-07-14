@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./../../logo.svg";
-import bro from "./../../bro.svg";
-import leaves from "./../../leaves.svg";
+
 
 const Splash = () => {
   const history = useNavigate();
