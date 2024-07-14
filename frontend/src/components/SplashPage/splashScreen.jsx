@@ -20,16 +20,8 @@ const Splash = () => {
   return (
     <div className="splash-main">
       <div className="logo-and-text-box">
-        <img src={logo} style={{ width: 70 }} alt="logo" />
-        <h2>Price Wiz Analytics</h2>
-        <p style={{ textAlign: "center"}}>
-          PriceWiz Analytics is a cutting-edge data analysis platform designed
-          to empower businesses with actionable insights into pricing strategies
-          and market dynamics.
-        </p>
+        <img src={logo} style={{ width: 150 }} alt="logo" />
       </div>
-      <img src={bro} className="bro" alt="logo" />
-      <img src={leaves} className="leaves" alt="logo" />
     </div>
   );
 };
