@@ -48,9 +48,6 @@ h6{
 }
 
 
-
-
-
 .main-section {
   width: 100%;
   position: relative;
@@ -58,9 +55,8 @@ h6{
 .map-container {
   width: 100%;
   position: relative;
-  margin-top: 75px;
-  background-color: rgb(117, 94, 1);
-  height: 90.7vh;
+  background-color: rgba(117, 94, 1, 0.049);
+  height: 100vh;
 }
 .search-container {
   width: 340px;
@@ -136,7 +132,7 @@ h6{
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.614);
+  background: rgba(0, 0, 0, 0.198);
   pointer-events: none;
 }
 

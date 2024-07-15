@@ -88,43 +88,12 @@ const HomePage = () => {
           </div>
         </div>
       )}
-      {averagePrice !== null && (
-        <div className="main-overlay">
-          <motion.div
-            className="network-error-box"
-            style={{ height: 400 }}
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -50, opacity: 0 }}
-          >
-            <div className="box-header">
-              <CloseIcon />
-            </div>
-            <Lottie
-              animationData={calculate}
-              style={{ width: 220 }}
-              loop={true}
-            />
-            <h6>Average price of stations available ...₦{averagePrice}/L</h6>
-          </motion.div>
-        </div>
-      )}
-
-      <LogoContainer />
       <MapView
         setLoading={setLoading}
         data={data}
         setData={setData}
         setOriginalData={setOriginalData}
       />
-      <SearchContainer
-        setData={setData}
-        data={data}
-        setAveragePrice={setAveragePrice}
-        originalData={originalData}
-        setLoading={setLoading}
-      />
-      <ResultSummaryContainer data={data} />
     </div>
   );
 };
