@@ -47,23 +47,23 @@ const HomePage = () => {
               </div>
 
               <div className="border-b border-gray-300 p-4">
-                <h2 className="font-semibold">Country:</h2>
+                <h2 className="font-semibold">Reciever's Country:</h2>
                 <p>{packageData.country} </p>
               </div>
 
               <div className="border-b border-gray-300 p-4">
-                <h2 className="font-semibold">State:</h2>
+                <h2 className="font-semibold">Reciever's State:</h2>
                 <p>{packageData.receiver_state} </p>
               </div>
 
 
               <div className="border-b border-gray-300 p-4">
-                <h2 className="font-semibold">City:</h2>
+                <h2 className="font-semibold">Reciever's City:</h2>
                 <p>{packageData.receiver_city} </p>
               </div>
 
               <div className="border-b border-gray-300 p-4">
-                <h2 className="font-semibold">House Address:</h2>
+                <h2 className="font-semibold">Reciever's House Address:</h2>
                 <p>{packageData.house_address} </p>
               </div>
 
@@ -86,7 +86,7 @@ const HomePage = () => {
 
 
               <div className="border-b border-gray-300 p-4">
-                <h2 className="font-semibold">Description:</h2>
+                <h2 className="font-semibold">Parcel Description:</h2>
                 <p>{packageData.description} </p>
               </div>
 
@@ -96,7 +96,7 @@ const HomePage = () => {
               </div>
 
               <div className="border-b border-gray-300 p-4">
-                <h2 className="font-semibold">Weight:</h2>
+                <h2 className="font-semibold">Parcel Weight:</h2>
                 <p>{packageData.weight} </p>
               </div>
             </div>
