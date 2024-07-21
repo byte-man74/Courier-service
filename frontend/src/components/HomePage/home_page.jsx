@@ -47,8 +47,19 @@ const HomePage = () => {
               </div>
 
               <div className="border-b border-gray-300 p-4">
-                <h2 className="font-semibold">Address:</h2>
-                <p>{packageData.address} </p>
+                <h2 className="font-semibold">Country:</h2>
+                <p>{packageData.country} </p>
+              </div>
+
+              <div className="border-b border-gray-300 p-4">
+                <h2 className="font-semibold">State:</h2>
+                <p>{packageData.receiver_state} </p>
+              </div>
+
+
+              <div className="border-b border-gray-300 p-4">
+                <h2 className="font-semibold">City:</h2>
+                <p>{packageData.receiver_city} </p>
               </div>
 
               <div className="border-b border-gray-300 p-4">
@@ -56,13 +67,20 @@ const HomePage = () => {
                 <p>{packageData.house_address} </p>
               </div>
 
+
+              <div className="border-b border-gray-300 p-4">
+                <h2 className="font-semibold">Receiver's Email:</h2>
+                <p>{packageData.receiver_email} </p>
+              </div>
+
+
               <div className="border-b border-gray-300 p-4">
                 <h2 className="font-semibold">Sender's Name:</h2>
-                <p>{packageData.house_address} </p>
+                <p>{packageData.sender_name} </p>
               </div>
 
               <div className="border-b border-gray-300 p-4">
-                <h2 className="font-semibold">Sender's house number:</h2>
+                <h2 className="font-semibold">Sender's address:</h2>
                 <p>{packageData.sender_house_number} </p>
               </div>
 
