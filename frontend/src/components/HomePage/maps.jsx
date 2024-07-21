@@ -173,7 +173,7 @@ export const MapView = ({
         whileTap={{ scale: 0.8 }}
         whileHover={{ scale: 1.1 }}
         onClick={() => navigate("/search")}
-        className="absolute bg-black border-[#B7B7B7] border-1 border-solid flex items-center justify-center gap-3 top-8 left-2 md:top-8 md:left-8 w-[60px] rounded-full h-[60px] z-[1000] cursor-pointer"
+        className="absolute bg-black border-[#B7B7B7] border-1 border-solid flex items-center justify-center gap-3 top-10 left-2 md:top-8 md:left-8 w-[60px] rounded-full h-[60px] z-[1000] cursor-pointer"
       >
         <BackSvg />
       </motion.div>
