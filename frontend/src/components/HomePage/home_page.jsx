@@ -25,10 +25,10 @@ const HomePage = () => {
     <div className="main-section relative">
       {loading && (
         <div className="main-overlay">
-          <div>
+          <div className="flex justify-center items-center flex-column">
             <Lottie
               animationData={animation_data}
-              style={{ width: 320 }}
+              style={{ width: 120 }}
               loop={true}
             />
             <p style={{ marginTop: 0, color: "white", fontWeight: 700 }}>
