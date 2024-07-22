@@ -99,6 +99,13 @@ const HomePage = () => {
                 <h2 className="font-semibold">Parcel Weight:</h2>
                 <p>{packageData.weight} </p>
               </div>
+
+
+              <div className="border-b border-gray-300 p-4">
+                <h2 className="font-semibold">Current Location:</h2>
+                <p>{packageData.current_location} </p>
+              </div>
+
             </div>
           </div>
         </div>
