@@ -43,7 +43,7 @@ export const SearchPage = () => {
       <div className="w-full h-[100vh] bg-[#FCE46A] flex items-center justify-center p-4 md:p-0">
         {error && (
           <motion.div
-            className="bg-red-500 text-white w-[300px] absolute top-[100px] text-center mt-4 p-2 rounded-md"
+            className="bg-red-500 text-white w-[300px] absolute top-[50px] text-center mt-4 p-2 rounded-md"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
