@@ -76,8 +76,9 @@ export const SearchPage = () => {
                   type="text"
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
-                  className="h-[40px] md:h-[50%] w-full outline-none mb-4 md:mb-0 px-2"
+                  className="h-[40px] md:h-[100%] w-full border-none mb-4 md:mb-0 px-2"
                   placeholder="Enter your shipping address"
+                  style={{ outline: 'none' }}
                 />
                 <div
                   className="button md:w-[240px] w-full h-[50px] md:h-[70px] flex justify-center md:justify-start cursor-pointer bg-blue-500 text-white rounded-md flex items-center justify-center"
