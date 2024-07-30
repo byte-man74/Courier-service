@@ -17,11 +17,11 @@ import banner from "./../../banner.svg";
 import { Modal, Button } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 
-
-
 const LandingPage = () => {
   const [navBg, setNavBg] = useState(false);
   const [modalContact, setModalContact] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const handleScroll = () => {
@@ -47,7 +47,7 @@ const LandingPage = () => {
     if (method === "email") {
       window.location.href = "mailto:contact@xiengcourier.com";
     } else if (method === "phone") {
-      window.location.href = "tel:+2341234567";
+      window.location.href = "tel:+1(601)6914974";
     }
     setModalContact(false); // Close the modal after action
   };
@@ -140,9 +140,65 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
+            {isMenuOpen && (
+              <div className="fixed inset-0 bg-white shadow-lg z-40 md:hidden">
+                <div className="flex flex-col items-center mt-12">
+                  <button
+                    className="self-end mr-6 mt-4"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <svg
+                      className="h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                  <div className="flex flex-col space-y-4">
+                    <motion.div
+                      onClick={() => {
+                        scrollToSection("whoWeAre");
+                        setIsMenuOpen(false);
+                      }}
+                      className="text-gray-700 px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
+                    >
+                      About us
+                    </motion.div>
+                    <motion.div
+                      onClick={() => {
+                        scrollToSection("services");
+                        setIsMenuOpen(false);
+                      }}
+                      className="text-gray-700 px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
+                    >
+                      Our Services
+                    </motion.div>
+                    <motion.div
+                      onClick={() => {
+                        setModalContact(true);
+                        setIsMenuOpen(false);
+                      }}
+                      className="text-gray-700 px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
+                    >
+                      Contact us
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+            )}
             <div className="-mr-2 flex md:hidden">
               <button
                 type="button"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="bg-gradient-to-r from-[#7D83FF] to-[#2D598A] text-white font-semibold py-2 px-4 rounded shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <span className="sr-only">Open main menu</span>
@@ -413,6 +469,7 @@ const LandingPage = () => {
               className="px-12 py-4 bg-gradient-to-r from-[#7D83FF] to-[#2D598A] text-white font-semibold shadow-md hover:shadow-lg transition-shadow duration-300 rounded-md"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/splash")}
             >
               Get Started
             </motion.button>
@@ -448,7 +505,7 @@ const LandingPage = () => {
             <p className="mb-4">
               Phone:{" "}
               <a
-                href="tel:+1234567890"
+                href="tel:+1(601)6914974"
                 className="text-blue-400 hover:underline"
               >
                 +123 456 7890
