@@ -508,7 +508,7 @@ const LandingPage = () => {
                 href="tel:+1(601)6914974"
                 className="text-blue-400 hover:underline"
               >
-                +123 456 7890
+                +1(601)691-4974
               </a>
             </p>
             <p className="text-gray-400">
