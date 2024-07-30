@@ -45,7 +45,7 @@ const LandingPage = () => {
 
   const handleContact = (method) => {
     if (method === "email") {
-      window.location.href = "mailto:contact@xiengcourier.com";
+      window.location.href = "mailto:contact@Xihangcourier.com";
     } else if (method === "phone") {
       window.location.href = "tel:+1(601)6914974";
     }
@@ -110,7 +110,7 @@ const LandingPage = () => {
               <div className="ml-4">
                 <div className="company-name-container">
                   <div className="text-gray-700 text-xl font-bold">
-                    Xieng Courier Service
+                    Xihang Courier Service
                   </div>
                 </div>
               </div>
@@ -244,7 +244,7 @@ const LandingPage = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              At Xieng Courier Service, we deliver excellence. Our mission is to
+              At Xihang Courier Service, we deliver excellence. Our mission is to
               provide swift, secure, and reliable courier services for
               individuals and businesses. From small packages to large
               shipments, we ensure your parcels arrive on time, every time.
@@ -345,11 +345,11 @@ const LandingPage = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Xieng Courier Service is your trusted partner in delivery. With a
+              Xihang Courier Service is your trusted partner in delivery. With a
               commitment to speed, security, and reliability, we cater to both
               individuals and businesses. Whether it's a tiny package or a bulky
               shipment, we get it there on time, every time. Experience the
-              Xieng difference – where every delivery is handled with precision
+              Xihang difference – where every delivery is handled with precision
               and care.
             </motion.p>
           </div>
@@ -377,7 +377,7 @@ const LandingPage = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              At Xieng Courier Service, we deliver very carefully. As your
+              At Xihang Courier Service, we deliver very carefully. As your
               trusted partner in delivery, we pride ourselves on speed,
               security, and reliability for both individuals and businesses.
               Whether it's a small package or a large shipment, we ensure it
@@ -492,14 +492,14 @@ const LandingPage = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center">
-            <h2 className="text-2xl font-bold mb-4">Xieng Courier Service</h2>
+            <h2 className="text-2xl font-bold mb-4">Xihang Courier Service</h2>
             <p className="mb-2">
               Email:{" "}
               <a
-                href="mailto:info@xiengcourier.com"
+                href="mailto:info@Xihangcourier.com"
                 className="text-blue-400 hover:underline"
               >
-                info@xiengcourier.com
+                info@Xihangcourier.com
               </a>
             </p>
             <p className="mb-4">
@@ -512,7 +512,7 @@ const LandingPage = () => {
               </a>
             </p>
             <p className="text-gray-400">
-              © 2024 Xieng Courier Service. All rights reserved.
+              © 2024 Xihang Courier Service. All rights reserved.
             </p>
           </div>
         </div>
