@@ -45,9 +45,9 @@ const LandingPage = () => {
 
   const handleContact = (method) => {
     if (method === "email") {
-      window.location.href = "mailto:contact@Xihangcourier.com";
+      window.location.href = "mailto:xihangcourierservice@gmail.com";
     } else if (method === "phone") {
-      window.location.href = "tel:+1(601)6914974";
+      window.location.href = "tel:+1(615)-623-1375";
     }
     setModalContact(false); // Close the modal after action
   };
@@ -512,7 +512,7 @@ const LandingPage = () => {
               </a>
             </p>
             <p className="text-gray-400">
-              © 2024 Xihang Courier Service. All rights reserved.
+              © 2025 Xihang Courier Service. All rights reserved.
             </p>
           </div>
         </div>
