@@ -496,19 +496,19 @@ const LandingPage = () => {
             <p className="mb-2">
               Email:{" "}
               <a
-                href="mailto:info@Xihangcourier.com"
+                href="mailto:xihangcourierservice@gmail.com"
                 className="text-blue-400 hover:underline"
               >
-                info@Xihangcourier.com
+                xihangcourierservice@gmail.com
               </a>
             </p>
             <p className="mb-4">
               Phone:{" "}
               <a
-                href="tel:+1(601)6914974"
+                href="tel:+1(615)-623-1375"
                 className="text-blue-400 hover:underline"
               >
-                +1(601)691-4974
+                +1(615)-623-1375
               </a>
             </p>
             <p className="text-gray-400">
